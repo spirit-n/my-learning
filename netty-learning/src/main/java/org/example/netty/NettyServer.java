@@ -23,16 +23,7 @@ public class NettyServer {
                                 .addLast(new LineBasedFrameDecoder(1024))
                                 .addLast(new StringDecoder())
                                 .addLast(new StringEncoder())
-                                .addLast(new SimpleChannelInboundHandler<String>() {
-                                    @Override
-                                    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-                                        System.out.println(msg);
-                                        String message = msg + " world\n";
-                                        ctx.channel().writeAndFlush(message);
-                                        ctx.fireChannelRead(msg);
-                                    }
-
-                                });
+                                .addLast(new MyChannelHandler());
                     }
                 });
         ChannelFuture bindFuture = serverBootstrap.bind(8080);
@@ -44,5 +35,15 @@ public class NettyServer {
             }
         });
 
+    }
+
+    private static class MyChannelHandler extends SimpleChannelInboundHandler<String> {
+        @Override
+        protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+            System.out.println(msg);
+            String message = msg + " world\n";
+            ctx.channel().writeAndFlush(message);
+            ctx.fireChannelRead(msg);
+        }
     }
 }
