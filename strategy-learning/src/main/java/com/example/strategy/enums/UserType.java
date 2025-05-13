@@ -1,4 +1,4 @@
-package com.example.strategy.controller;
+package com.example.strategy.enums;
 
 import java.util.function.IntPredicate;
 

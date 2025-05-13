@@ -1,4 +1,6 @@
-package com.example.strategy.controller;
+package com.example.strategy.annotation;
+
+import com.example.strategy.enums.UserType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

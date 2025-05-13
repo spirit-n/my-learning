@@ -1,5 +1,7 @@
-package com.example.strategy.controller;
+package com.example.strategy.service;
 
+import com.example.strategy.annotation.SupportUserType;
+import com.example.strategy.enums.UserType;
 import org.springframework.stereotype.Service;
 
 @SupportUserType(UserType.NORMAL)

@@ -1,6 +1,9 @@
 package com.example.strategy.controller;
 
-import org.springframework.stereotype.Controller;
+import com.example.strategy.annotation.SupportUserType;
+import com.example.strategy.enums.UserType;
+import com.example.strategy.service.CustomerService;
+import com.example.strategy.service.DefaultCustomerService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

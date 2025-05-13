@@ -1,4 +1,4 @@
-package com.example.strategy.controller;
+package com.example.strategy.service;
 
 public interface CustomerService {
 
