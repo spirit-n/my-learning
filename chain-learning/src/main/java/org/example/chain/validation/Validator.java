@@ -4,6 +4,7 @@ import org.example.chain.annotation.Length;
 import org.example.chain.annotation.Max;
 import org.example.chain.annotation.Min;
 import org.example.chain.handler.LengthValidatorHandler;
+import org.example.chain.handler.MaxValidatorHandler;
 import org.example.chain.handler.MinValidatorHandler;
 
 import java.lang.reflect.Field;
@@ -36,7 +37,7 @@ public class Validator {
 
         Max max = field.getAnnotation(Max.class);
         if(max != null){
-            validatorChain.addLastValidator(new MinValidatorHandler(max.value()));
+            validatorChain.addLastValidator(new MaxValidatorHandler(max.value()));
         }
 
 
