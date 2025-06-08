@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  redis-master-6380:
+    image: docker.m.daocloud.io/redis:7.0
+    container_name: redis-master-6380
+    ports:
+      - "6380:6380"
+      - "16380:16380"
+    volumes:
+      - /home/redis-cluster/master/6380/redis.conf:/usr/local/etc/redis/redis.conf
+      - /home/redis-cluster/master/6380:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+
+  redis-master-6381:
+    image: docker.m.daocloud.io/redis:7.0
+    container_name: redis-master-6381
+    ports:
+      - "6381:6381"
+      - "16381:16381"
+    volumes:
+      - /home/redis-cluster/master/6381/redis.conf:/usr/local/etc/redis/redis.conf
+      - /home/redis-cluster/master/6381:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+
+  redis-master-6382:
+    image: docker.m.daocloud.io/redis:7.0
+    container_name: redis-master-6382
+    ports:
+      - "6382:6382"
+      - "16382:16382"
+    volumes:
+      - /home/redis-cluster/master/6382/redis.conf:/usr/local/etc/redis/redis.conf
+      - /home/redis-cluster/master/6382:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+
+  redis-slave-6380:
+    image: docker.m.daocloud.io/redis:7.0
+    container_name: redis-slave-6380
+    ports:
+      - "6383:6380"
+      - "16383:16380"
+    volumes:
+      - /home/redis-cluster/slave/6380/redis.conf:/usr/local/etc/redis/redis.conf
+      - /home/redis-cluster/slave/6380:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+
+  redis-slave-6381:
+    image: docker.m.daocloud.io/redis:7.0
+    container_name: redis-slave-6381
+    ports:
+      - "6384:6381"
+      - "16384:16381"
+    volumes:
+      - /home/redis-cluster/slave/6381/redis.conf:/usr/local/etc/redis/redis.conf
+      - /home/redis-cluster/slave/6381:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+
+  redis-slave-6382:
+    image: docker.m.daocloud.io/redis:7.0
+    container_name: redis-slave-6382
+    ports:
+      - "6385:6382"
+      - "16385:16382"
+    volumes:
+      - /home/redis-cluster/slave/6382/redis.conf:/usr/local/etc/redis/redis.conf
+      - /home/redis-cluster/slave/6382:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
